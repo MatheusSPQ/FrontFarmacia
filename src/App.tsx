@@ -9,7 +9,7 @@ import CadastrarCategoria from './pages/categorias/CadastrarCategoria'
 
 
 function App() {
-
+ //rotas finalizadas
   return (
     <>
       <BrowserRouter>
