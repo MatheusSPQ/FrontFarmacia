@@ -2,19 +2,31 @@ import { useState, useEffect } from "react"
 import type Produto from "../../../models/Produto"
 import CardProduto from "../cardProdutos/CardProdutos"
 import { DNA } from "react-loader-spinner"
+import { buscar } from "../../../services/Service"
 
 function ListaProdutos() {
-  const [produtos, setProdutos] = useState<Produto[]>([])
-  const [isLoading, setIsLoading] = useState(true)
-
+    const [produtos, setProdutos] = useState<Produto[]>([])
+    const [isLoading, setIsLoading] = useState(true)
   
-  useEffect(() => {})
+    async function buscarProdutos() {
+      try {
+        await buscar("/produtos", setProdutos, {})
+        setIsLoading(false)
+      } catch (error: any) {
+        console.error("Erro ao buscar produtos:", error)
+        setIsLoading(false)
+      }
+    }
+  
+    useEffect(() => {
+      buscarProdutos()
+    }, [buscarProdutos]) // Added buscarProdutos to the dependency array
 
-  return (
+    return (
     <>
-      {isLoading ? (
+        {isLoading ? (
         <DNA
-          visible={true}
+        visible={true}
           height="200"
           width="200"
           ariaLabel="dna-loading"

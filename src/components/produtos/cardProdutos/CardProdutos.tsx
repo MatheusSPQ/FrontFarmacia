@@ -14,7 +14,7 @@ function CardProduto({ produto }: CardProdutoProps) {
         <div className="p-4">
           <h3 className="text-lg font-medium text-gray-900">{produto.nome}</h3>
           {produto.categoria && <p className="mt-1 text-sm text-gray-500">{produto.categoria.nome}</p>}
-          <p className="mt-2 text-lg font-semibold text-gray-900">R$ {produto.preco.toFixed(2)}</p>
+          <p className="mt-2 text-lg font-semibold text-gray-900">R$ {produto.preco}</p>
         </div>
       </div>
     </div>
